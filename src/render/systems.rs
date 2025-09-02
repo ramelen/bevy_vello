@@ -334,9 +334,10 @@ pub fn get_viewport_size(
     window: Option<Single<&Window, With<PrimaryWindow>>>,
 ) -> (u32, u32) {
     if let Ok(camera) = camera_query.single() 
-        && let Some(viewport) = &camera.viewport {
-            return (viewport.physical_size.x, viewport.physical_size.y);
-        }
+        && let Some(viewport) = &camera.viewport 
+    {
+        return (viewport.physical_size.x, viewport.physical_size.y);
+    }
 
     let Some(window) = window.as_deref() else {
         panic!("We only support rendering to the primary window right now.");
